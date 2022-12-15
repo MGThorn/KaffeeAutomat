@@ -13,11 +13,13 @@ public class Window
   JPanel pane;
   Dimension dim;
   Image background;
+  Image cup_img;
 
   Window() throws IOException{
     frame = new JFrame();
     dim = Toolkit.getDefaultToolkit().getScreenSize();
     background = ImageIO.read(new File("rsc\\background.jpg"));
+    cup_img = ImageIO.read(new File("rsc\\Cup.png"));
     
     //init frame
     frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -36,12 +38,12 @@ public class Window
     //add background to Frame
     frame.getContentPane().add(pane, BorderLayout.CENTER);
 
-    JLabel monitor = new JLabel();
-    monitor.setBounds(((int)(dim.getWidth()/4.8)),((int)(dim.getHeight()/3.1*1.7)),100,100);
-    monitor.setVisible(true);
-    monitor.setOpaque(false);
-    monitor.setText("null");
-    pane.add(monitor);
+    JLabel cup = new JLabel();
+    cup.setBounds(((int)(dim.getWidth()/4.8)),((int)(dim.getHeight()/3.1*1.7)),200,200);
+    cup.setVisible(true);
+    cup.setOpaque(false);
+    cup.setIcon(new ImageIcon(this.cup_img));
+    pane.add(cup);
 
     JButton button = new JButton();
     button.setBounds(0,0,10,10);
