@@ -31,7 +31,7 @@ public class Window
       @Override
       protected void paintComponent(Graphics g) {
           super.paintComponent(g);
-          g.drawImage(background, 0, 0,((int)dim.getWidth()/2),((int)dim.getWidth()/2), null);
+          g.drawImage(background, 0, 0,((int)dim.getWidth()/2),((int)dim.getHeight()), null);
       }
     };
     pane.setLayout(null);
