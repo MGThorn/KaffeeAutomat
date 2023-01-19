@@ -19,6 +19,8 @@ public class WindowAbs
   Image milk_img;
   Image coffee_img;
   Image water_img;
+  Image on_img;
+  Image off_img;
 
   int zustand;
 
@@ -30,6 +32,8 @@ public class WindowAbs
     milk_img = ImageIO.read(new File("rsc\\Milk.jfif"));
     coffee_img = ImageIO.read(new File("rsc\\coffee.jfif"));
     water_img = ImageIO.read(new File("rsc\\Water.jfif"));
+    on_img = ImageIO.read(new File("rsc\\On.png"));
+    off_img = ImageIO.read(new File("rsc\\Off.png"));
     
     //init frame
     frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -67,8 +71,23 @@ public class WindowAbs
     JButton onButton = new JButton();
     onButton.setBounds(250,500,50,50);
     onButton.setVisible(true);
-    onButton.setIcon(new ImageIcon(this.cup_img));
+    onButton.setIcon(new ImageIcon(this.off_img));
     onButton.setOpaque(true);
+    onButton.setBorderPainted(false);
+    onButton.setContentAreaFilled(false);
+    onButton.setFocusable(false);
+    onButton.addActionListener(new ActionListener(){  
+      boolean on;
+      public void actionPerformed(ActionEvent e){  
+        if(on) {
+          on=false;
+          onButton.setIcon(new ImageIcon(off_img));
+        }else{
+          on=true;
+          onButton.setIcon(new ImageIcon(on_img));
+        }
+      }  
+      }); 
     pane.add(onButton);
 
     JButton button1 = new JButton();
