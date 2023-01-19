@@ -14,6 +14,11 @@ public class WindowAbs
   JPanel pane;
   Dimension dim;
 
+  JLabel txtOutput;
+  JLabel cup;
+
+  JButton onButton;
+
   Image background;
   Image cup_img;
   Image milk_img;
@@ -22,11 +27,30 @@ public class WindowAbs
   Image on_img;
   Image off_img;
 
+  Automat automat;
   int zustand;
 
   WindowAbs() throws IOException{
+    //init Automat
+    automat = new Automat();
+
+    //init rest TODO rest
+    init();
+
+    //syncing screen with Automat
+    while(true){
+      refreshScreen();
+    }
+
+  }
+
+  private void refreshScreen() {
+
+  }
+
+  private void init() throws IOException {
     frame = new JFrame();
-    dim = Toolkit.getDefaultToolkit().getScreenSize();
+    //init img
     background = ImageIO.read(new File("rsc\\background.jpg"));
     cup_img = ImageIO.read(new File("rsc\\Cup.png"));
     milk_img = ImageIO.read(new File("rsc\\Milk.jfif"));
@@ -53,14 +77,14 @@ public class WindowAbs
     frame.getContentPane().add(pane, BorderLayout.CENTER);
 
     
-    JLabel txtOutput = new JLabel();
+    txtOutput = new JLabel();
     txtOutput.setBounds(210,165,150,25);
     txtOutput.setText("null");
     txtOutput.setVisible(true);
     txtOutput.setOpaque(true);
     pane.add(txtOutput);
 
-    JLabel cup = new JLabel();
+    cup = new JLabel();
     cup.setBounds(200,300,200,200);
     cup.setVisible(true);
     cup.setBackground(Color.BLACK);
@@ -68,7 +92,7 @@ public class WindowAbs
     cup.setIcon(new ImageIcon(this.cup_img));
     pane.add(cup);
 
-    JButton onButton = new JButton();
+    onButton = new JButton();
     onButton.setBounds(250,500,50,50);
     onButton.setVisible(true);
     onButton.setIcon(new ImageIcon(this.off_img));
@@ -155,6 +179,5 @@ public class WindowAbs
       }  
       }); 
     pane.add(waterButton);
-
   }
 }
