@@ -1,12 +1,23 @@
 
 public class Automat {
+
 	public int zustand;
 	
 	public int wasserStand;
 	public int bohnenStand;
 	public int milchStand;
 
-	private void zustandWechseln(char eingabe) {
+	Automat(){
+		wasserStand = 100;
+		bohnenStand = 100;
+		milchStand = 100;
+
+		zustand = 0;
+		
+	}
+
+
+	public void zustandWechseln(char eingabe) {
 		switch (zustand) {
 		case 0: {
 			switch (eingabe) {
